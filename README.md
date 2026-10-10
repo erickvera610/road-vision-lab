@@ -1,6 +1,6 @@
 # Road Vision Lab
 
-Tesla-sector-inspired synthetic lane geometry: ROI filtering, robust line fits, residual errors and canvas overlay.
+Tesla-sector-inspired synthetic lane geometry: robust line fits, residual errors and canvas overlay.
 
 An AI-assisted educational portfolio project prepared for Erik Vera's internship learning. This is a working prototype, not production software. Authorship and skills should be represented based on what you can explain and change independently.
 
@@ -49,7 +49,3 @@ Create a feature branch, make one small change, run the tests, commit it, push t
 - https://docs.github.com/en/actions/tutorials/build-and-test-code/python
 
 License: MIT.
-
-## Daily practical exercises
-
-A daily GitHub Actions job runs one dated fictional scenario and saves inputs and outputs in `exercises/`. Read [Spanish daily guide](EJERCICIOS_DIARIOS_ES.md). Commits are authored by github-actions[bot].

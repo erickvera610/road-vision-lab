@@ -2,7 +2,7 @@
 
 ## 1. Qué hace y por qué existe
 
-Tesla-sector-inspired synthetic lane geometry: ROI filtering, robust line fits, residual errors and canvas overlay.
+Tesla-sector-inspired synthetic lane geometry: robust line fits, residual errors and canvas overlay.
 
 Se generan coordenadas de carriles con ruido. Ajusto x=a*y+b con mínimos cuadrados y descarto puntos con residuo grande antes de volver a ajustar. ROI es la región de interés; aquí las coordenadas están entre y=80 e y=240. RMSE mide error en píxeles. Este ejercicio no detecta carriles de una foto real: prepara la geometría para un futuro pipeline de visión.
 
