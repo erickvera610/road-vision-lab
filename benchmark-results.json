@@ -1,0 +1,74 @@
+{
+  "project": "road-vision-lab",
+  "executed_at_utc": "2026-10-10T18:37:09.311034+00:00",
+  "execution_method": "Python script",
+  "summary": {
+    "detected_scenes": 10,
+    "scene_count": 10,
+    "mean_width_error_px": 1.5177882490953507,
+    "blank_image_detected": false
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "detected": true,
+      "width_error_px": 2.251307690287021,
+      "left_inlier_ratio": 0.8565573770491803
+    },
+    {
+      "seed": 1,
+      "detected": true,
+      "width_error_px": 1.6462135324299112,
+      "left_inlier_ratio": 0.7745901639344263
+    },
+    {
+      "seed": 2,
+      "detected": true,
+      "width_error_px": 2.625106929965682,
+      "left_inlier_ratio": 0.7704918032786885
+    },
+    {
+      "seed": 3,
+      "detected": true,
+      "width_error_px": 1.8778262759098254,
+      "left_inlier_ratio": 0.8155737704918032
+    },
+    {
+      "seed": 4,
+      "detected": true,
+      "width_error_px": 0.42736190290756326,
+      "left_inlier_ratio": 0.7950819672131147
+    },
+    {
+      "seed": 5,
+      "detected": true,
+      "width_error_px": 0.7862234741043608,
+      "left_inlier_ratio": 0.7991803278688525
+    },
+    {
+      "seed": 6,
+      "detected": true,
+      "width_error_px": 0.5617136270579692,
+      "left_inlier_ratio": 0.7704918032786885
+    },
+    {
+      "seed": 7,
+      "detected": true,
+      "width_error_px": 1.887758243194071,
+      "left_inlier_ratio": 0.8155737704918032
+    },
+    {
+      "seed": 8,
+      "detected": true,
+      "width_error_px": 2.728313434804491,
+      "left_inlier_ratio": 0.7868852459016393
+    },
+    {
+      "seed": 9,
+      "detected": true,
+      "width_error_px": 0.3860573802926126,
+      "left_inlier_ratio": 0.7991803278688525
+    }
+  ],
+  "limitations": "Reproducible prototype evidence, not employer affiliation or production certification."
+}
