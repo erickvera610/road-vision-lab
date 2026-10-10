@@ -1,16 +1,29 @@
 # Road Vision Lab
 
-Tesla-sector-inspired synthetic lane geometry: robust line fits, residual errors and canvas overlay.
+The original demo fitted coordinates supplied by the generator. This version extracts candidate pixels from a grayscale image and estimates lines with RANSAC. A synthetic road scene supplies known geometry; visitors can also upload a local PNG/JPEG/WebP photograph.
 
-An AI-assisted educational portfolio project prepared for Erik Vera's internship learning. This is a working prototype, not production software. Authorship and skills should be represented based on what you can explain and change independently.
+**[Open the live demo](https://erickvera610.github.io/road-vision-lab/)** · [Spanish tutorial](TUTORIAL_ES.md) · [Case study](CASE_STUDY.md) · [Measured results](benchmark-results.json)
 
-## Public demo
+## Understand it in one minute
 
-[Open browser demo](https://erickvera610.github.io/road-vision-lab/). Visitors can run examples on their device without write access to this repository.
+Image pixels → grayscale ROI → gradients → RANSAC → line overlay
 
-## Run in two minutes
+A fixed lower-image ROI, bright-pixel threshold and horizontal gradient reject much of the background. RANSAC tolerates some bright distractors, then least-squares refits the inliers. A fixed seed makes the exercise reproducible. No neural detector is claimed.
 
-Requires Python 3.11 or newer; no pip dependencies.
+## Measured evidence
+
+Reproduced with Python by `python benchmark.py`. Execution timestamp is recorded in the JSON report. Synthetic JavaScript values may differ because the random generator differs.
+
+| Measurement | Result |
+|---|---|
+| detected scenes | 10 |
+| scene count | 10 |
+| mean width error px | 1.5178 |
+| blank image detected | False |
+
+## Run locally
+
+Python 3.11 or 3.12, standard library only. No API keys.
 
 ```bash
 git clone https://github.com/erickvera610/road-vision-lab.git
@@ -18,34 +31,44 @@ cd road-vision-lab
 python app.py
 ```
 
-Open http://127.0.0.1:8000. On Windows, use `py app.py` if `python` is unavailable. Stop with Ctrl+C. Run `python -m unittest discover -v` to execute tests.
+Open http://127.0.0.1:8000. Stop with Ctrl+C. The public browser demo requires no installation.
 
-## Architecture
+## Reproduce and inspect
 
-- `index.html`: responsive accessible interface; renders output with textContent.
-- `app.py`: local HTTP service, `/health`, and validated JSON POST `/api/run`.
-- `core.py`: domain logic separated from transport and presentation.
-- `test_core.py`: deterministic behavior and failure cases.
-- `.github/workflows/tests.yml`: Python 3.11 and 3.12 CI.
-- `TUTORIAL_ES.md`: beginner Spanish guide and interview practice.
+```bash
+python -m unittest discover -v
+node test_enhanced.cjs
+python benchmark.py
+python daily_exercise.py
+```
 
-## API
+Use `core.run({"mode":"pixels","seed":42,"noise":10})`. Use `core.run({"image": grayscale_array})` for your own image. The public upload runs entirely on your device.
 
-POST a JSON object to `/api/run`; inputs are the same fields used by the interface. Responses are JSON. Invalid inputs return 400; unknown paths return 404. GET `/health` returns `{"status":"ok"}`.
+## Read the source
 
-## Design and limits
+- `core.py`: public algorithm entry point and preserved original exercise.
+- `pipeline.py`: featured implementation.
+- `enhanced.js`: browser implementation, readable without a build system.
+- `app.py`: localhost HTTP API.
+- `test_*.py` and `test_enhanced.cjs`: behavior and edge cases.
+- `benchmark.py`: evidence generator.
 
-Se generan coordenadas de carriles con ruido. Ajusto x=a*y+b con mínimos cuadrados y descarto puntos con residuo grande antes de volver a ajustar. ROI es la región de interés; aquí las coordenadas están entre y=80 e y=240. RMSE mide error en píxeles. Este ejercicio no detecta carriles de una foto real: prepara la geometría para un futuro pipeline de visión.
+## Limitations
 
-The built-in HTTP server is for a local demonstration. There is no authentication, rate limiting, or public production deployment. Never enter personal application records on a publicly exposed demo. Bind to localhost by default. For Codespaces only, run `HOST=0.0.0.0 python app.py` and keep the forwarded port private; usage may consume your GitHub quota.
+Only straight bright lanes are supported. Curves, night, occlusions, poor contrast and arbitrary photographs can fail. A false pair of lines can be returned. Inlier ratio is geometric agreement, not a calibrated probability. The synthetic benchmark does not measure road-image accuracy.
 
-## Review and contribution workflow
+## Daily practical exercises
 
-Create a feature branch, make one small change, run the tests, commit it, push the branch, and open a pull request. Explain the change and validation. Do not fabricate collaboration or commit history. Suggested first improvement: add a new input option with one behavior test and update this README.
+One dated fictional scenario runs daily through GitHub Actions. `exercises/YYYY-MM-DD/result.json` preserves inputs and outputs; `samples/latest.json` holds the latest input. Bot-authored report commits document script execution, not manual daily development. [Daily Spanish guide](EJERCICIOS_DIARIOS_ES.md).
 
-## References
+## Authorship and relevance
 
-- https://docs.python.org/3/library/http.server.html
-- https://docs.github.com/en/actions/tutorials/build-and-test-code/python
+Independent AI-assisted learning project in Erik Vera's portfolio. No affiliation with FOX, Tesla or BCG. The documentation distinguishes supplied implementation from improvements the learner actually makes. Code is MIT licensed; third-party data provenance is documented separately.
 
-License: MIT.
+## Featured portfolio
+
+- [Road Vision Lab](https://github.com/erickvera610/road-vision-lab)
+- [Demand Forecasting Lab](https://github.com/erickvera610/consulting-demand-lab)
+- [Media Prediction Lab](https://github.com/erickvera610/media-content-lab)
+- [Classification Evaluation Lab](https://github.com/erickvera610/ml-model-lab)
+- [Incident Workflow Lab](https://github.com/erickvera610/incident-response-lab)

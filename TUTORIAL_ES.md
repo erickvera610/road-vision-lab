@@ -1,71 +1,67 @@
 # Tutorial en español: Road Vision Lab
 
-## 1. Qué hace y por qué existe
+## 1. Qué problema resuelve
 
-Tesla-sector-inspired synthetic lane geometry: robust line fits, residual errors and canvas overlay.
+La computadora recibe una imagen: una matriz de números de 0 a 255. Ahora el proyecto busca píxeles que podrían formar carriles; ya no recibe los puntos del carril como entrada.
 
-Se generan coordenadas de carriles con ruido. Ajusto x=a*y+b con mínimos cuadrados y descarto puntos con residuo grande antes de volver a ajustar. ROI es la región de interés; aquí las coordenadas están entre y=80 e y=240. RMSE mide error en píxeles. Este ejercicio no detecta carriles de una foto real: prepara la geometría para un futuro pipeline de visión.
+## 2. Pruébalo primero
 
-## 2. Git y GitHub desde cero
+Abre https://erickvera610.github.io/road-vision-lab/ . La demo funciona en tu navegador. Cambia un control y compara la salida. Los datos ficticios no son usuarios reales; los ejemplos tampoco representan trabajo realizado para una empresa.
 
-Git guarda versiones de tu carpeta. GitHub aloja esas versiones para compartirlas. Un repositorio es una carpeta con historial. Un commit es una versión guardada; una branch permite trabajar por separado; un pull request permite revisar el cambio antes de integrarlo. GitHub no se instala: se abre en el navegador. Git sí se instala.
+## 3. Instálalo paso a paso
 
-1. Instala Python desde https://www.python.org/downloads/ y Git desde https://git-scm.com/downloads/. En Windows selecciona Add Python to PATH durante la instalación.
-2. Abre PowerShell. Escribe `python --version` y `git --version`. Si Python no aparece, prueba `py --version`.
-3. Ejecuta `git clone https://github.com/erickvera610/road-vision-lab.git`. Clone descarga archivos e historial.
-4. Ejecuta `cd road-vision-lab`. Ahora estás dentro de la carpeta.
-5. Ejecuta `python app.py` (o `py app.py`). La terminal debe mostrar Open http://127.0.0.1:8000.
-6. Abre esa dirección en el navegador y usa los controles. No cierres la terminal durante la demostración.
-7. Para detenerlo pulsa Ctrl+C. Si el puerto está ocupado, en PowerShell ejecuta `$env:PORT="8001"; python app.py` y abre http://127.0.0.1:8001.
+1. Instala Python desde python.org y Git desde git-scm.com.
+2. Abre PowerShell y escribe `python --version` y `git --version`.
+3. Escribe `git clone https://github.com/erickvera610/road-vision-lab.git`.
+4. Escribe `cd road-vision-lab`.
+5. Escribe `python app.py` y mantén abierta la terminal.
+6. Abre http://127.0.0.1:8000 y prueba los controles.
+7. Detén el servidor con Ctrl+C.
 
-## 3. Cómo se construyó
+## 4. La secuencia de trabajo
 
-Primero se definió el problema y un ejemplo pequeño reproducible. Después se escribió el algoritmo en core.py. Se añadieron pruebas para un caso correcto y errores importantes. app.py conecta el algoritmo con una API. index.html permite probarlo sin escribir comandos. Finalmente se añadieron documentación y un workflow de GitHub Actions. Se usó asistencia de IA: tu aprendizaje consiste en comprobar, explicar y modificar lo recibido.
+`Image pixels → grayscale ROI → gradients → RANSAC → line overlay`
 
-## 4. Leer el código en orden
+**ROI** es la región de interés: aquí, la parte inferior de la imagen. Un **gradiente** mide cómo cambia el brillo entre vecinos; ayuda a localizar bordes. **RANSAC** propone muchas rectas usando pares de puntos y conserva la que reúne más puntos cercanos. Los **inliers** son esos puntos cercanos. Después ajustamos otra vez la recta con mínimos cuadrados. El error de ancho compara la estimación con el ancho conocido de la escena ficticia. En una fotografía subida no conocemos ese ancho: el programa debe mostrar “No ground truth”, no inventar una precisión.
 
-Abre core.py y busca `run`: recibe el diccionario enviado por el navegador. Lee las funciones llamadas por run y cambia una variable pequeña. Después abre test_core.py: cada test declara una expectativa comprobable. Lee app.py: do_GET entrega la página y do_POST lee JSON y devuelve resultados. Por último lee index.html: api utiliza fetch para enviar datos; los eventos onclick conectan botones con acciones.
+Prueba la escena sintética, aumenta el ruido y después carga una fotografía. Si no detecta dos líneas, eso es un resultado válido. Detectar dos líneas tampoco garantiza que sean carriles.
 
-## 5. Comprobar que funciona
+## 5. Leer el código con calma
 
-Detén el servidor y ejecuta `python -m unittest discover -v`. OK indica que pasaron las pruebas, pero no demuestra que no existan otros errores. Reinicia la aplicación y prueba una entrada válida y una inválida. En GitHub abre Actions para revisar el resultado remoto; no confundas pruebas locales con una ejecución de Actions.
+Empieza por `core.py` y busca `run`. Después abre el archivo especializado indicado en README. Sigue una sola entrada hasta su salida. Lee las pruebas: cada una describe un comportamiento concreto. Por último, revisa `enhanced.js` para comparar la versión del navegador.
 
-## 6. Tu primer cambio real en GitHub
+## 6. Reproducir los resultados
 
 ```bash
-git switch -c feature/my-first-improvement
+python -m unittest discover -v
+node test_enhanced.cjs
+python benchmark.py
 ```
 
-Edita el texto de un botón o añade una mejora del algoritmo. Ejecuta las pruebas. Después:
+Abre `benchmark-results.json` y compara su resumen con `CASE_STUDY.md`. El reporte incluye una hora real de ejecución. Los experimentos con semillas repetidas muestran varios resultados; no escogemos solo el mejor. Las métricas sintéticas de JavaScript pueden diferir de Python.
+
+## 7. Tu siguiente mejora personal
+
+Añade escenas con sombras y curvas; registra cuándo falla en lugar de cambiar las imágenes para ocultarlo. Luego añade un dataset de imágenes con licencia y anotaciones, separando escenas de entrenamiento y prueba.
 
 ```bash
+git switch -c feature/my-improvement
+# Edita código y ejecuta las pruebas
 git add .
-git commit -m "Improve demonstration and document behavior"
-git push -u origin feature/my-first-improvement
+git commit -m "Describe the actual behavior change"
+git push -u origin feature/my-improvement
 ```
 
-En GitHub abre Compare & pull request. Describe qué cambiaste, por qué y cómo lo verificaste. Revisa Files changed antes de integrar. La autenticación de Git se hace con el navegador o el gestor de credenciales, no con una contraseña pegada en el código.
+Abre un pull request y explica problema, solución, resultado y límite. Se usó asistencia de IA para construir esta base. En una entrevista distingue lo que recibiste, lo que estudiaste y lo que realmente cambiaste.
 
-## 7. Ejercicios para dominarlo
+## 8. Practicar la entrevista
 
-1. Explica la entrada y salida de run sin leer el README.
-2. Añade una prueba para un caso límite diferente.
-3. Modifica un parámetro y observa cómo cambia el resultado.
-4. Añade una función pequeña y publícala mediante una branch y un pull request.
-5. Graba una demostración de dos minutos con el problema, la solución y una limitación.
+- What problem does this application solve?
+- Which data are available when the prediction is made?
+- What is the simplest baseline?
+- How did you avoid data leakage or inconsistent state?
+- Which result surprised you?
+- What failure case remains?
+- What did you personally improve?
 
-## 8. Preguntas de entrevista en inglés
-
-- What problem does this project solve?
-- How does data move from the browser to Python?
-- Why did you separate the core logic from the HTTP handler?
-- What edge cases did you test?
-- What are the limitations of this prototype?
-- What did you personally change after the initial AI-assisted implementation?
-- How would you improve this for production?
-
-Respuesta base para practicar: “This is an AI-assisted learning project. I studied the core algorithm, ran the tests, and implemented [your actual change]. The main limitation is [specific limitation].” Sustituye los corchetes por trabajo que realmente hayas realizado.
-
-## Demo pública
-
-Abre https://erickvera610.github.io/road-vision-lab/ . Cambia los controles y ejecuta el ejemplo. Python y JavaScript usan generadores distintos; las métricas pueden variar. Los datos son ficticios.
+Primero responde en español. Después prepara cuatro frases cortas en inglés: problema, método, resultado y limitación. Usa solo resultados documentados.
