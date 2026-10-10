@@ -1,0 +1,8 @@
+{
+  "name": "Road Vision Lab Python Demo",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "forwardPorts": [8000],
+  "portsAttributes": {"8000": {"label": "Road Vision Python Demo", "onAutoForward": "openBrowser"}},
+  "postCreateCommand": "python -m pip install -r requirements.txt",
+  "postStartCommand": "bash -c 'if ! curl -fsS http://127.0.0.1:8000/health >/dev/null; then HOST=0.0.0.0 nohup python app.py >/tmp/road-vision-app.log 2>&1 & fi'"
+}

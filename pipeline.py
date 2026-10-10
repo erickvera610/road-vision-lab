@@ -37,7 +37,7 @@ def candidates(image):
                 (left if x < w / 2 else right).append((x, y))
     return (left, right)
 
-def ransac(points, seed, expected_sign, iterations=120, tolerance=3):
+def ransac(points, seed, expected_sign, iterations=120, tolerance=3, max_slope=1.5):
     if len(points) < 8:
         return None
     rng = random.Random(seed)
@@ -48,7 +48,7 @@ def ransac(points, seed, expected_sign, iterations=120, tolerance=3):
             continue
         a = (p[0] - q[0]) / (p[1] - q[1])
         b = p[0] - a * p[1]
-        if not 0.05 < expected_sign * a < 1.5:
+        if not 0.05 < expected_sign * a < max_slope:
             continue
         kept = [(x, y) for x, y in points if abs(x - a * y - b) <= tolerance]
         if len(kept) > len(best):

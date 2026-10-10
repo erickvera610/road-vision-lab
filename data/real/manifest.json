@@ -1,0 +1,37 @@
+{
+  "source_commit": "ce5681be7ef8140560c0e464ef2da611e40b4fc9",
+  "license_file": "LICENSE.udacity",
+  "labels": "No official ground-truth lane annotations supplied. Small convenience collection used for exploratory diagnostics, not an independent held-out benchmark.",
+  "images": [
+    {
+      "filename": "solidWhiteCurve.jpg",
+      "sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "source_url": "https://github.com/udacity/CarND-LaneLines-P1/blob/ce5681be7ef8140560c0e464ef2da611e40b4fc9/test_images/solidWhiteCurve.jpg"
+    },
+    {
+      "filename": "solidWhiteRight.jpg",
+      "sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "source_url": "https://github.com/udacity/CarND-LaneLines-P1/blob/ce5681be7ef8140560c0e464ef2da611e40b4fc9/test_images/solidWhiteRight.jpg"
+    },
+    {
+      "filename": "solidYellowCurve.jpg",
+      "sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "source_url": "https://github.com/udacity/CarND-LaneLines-P1/blob/ce5681be7ef8140560c0e464ef2da611e40b4fc9/test_images/solidYellowCurve.jpg"
+    },
+    {
+      "filename": "solidYellowCurve2.jpg",
+      "sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "source_url": "https://github.com/udacity/CarND-LaneLines-P1/blob/ce5681be7ef8140560c0e464ef2da611e40b4fc9/test_images/solidYellowCurve2.jpg"
+    },
+    {
+      "filename": "solidYellowLeft.jpg",
+      "sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "source_url": "https://github.com/udacity/CarND-LaneLines-P1/blob/ce5681be7ef8140560c0e464ef2da611e40b4fc9/test_images/solidYellowLeft.jpg"
+    },
+    {
+      "filename": "whiteCarLaneSwitch.jpg",
+      "sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "source_url": "https://github.com/udacity/CarND-LaneLines-P1/blob/ce5681be7ef8140560c0e464ef2da611e40b4fc9/test_images/whiteCarLaneSwitch.jpg"
+    }
+  ]
+}

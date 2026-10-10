@@ -1,34 +1,29 @@
-# Case study: Road Vision Lab
+# Case study: real-road image processing
 
-## 1. Problem and intended user
+## Problem
 
-The original demo fitted coordinates supplied by the generator. This version extracts candidate pixels from a grayscale image and estimates lines with RANSAC. A synthetic road scene supplies known geometry; visitors can also upload a local PNG/JPEG/WebP photograph.
+Inspect candidate straight-lane geometry in a real photograph and expose intermediate evidence. The earlier coordinate generator and synthetic pixel demo did not establish real-camera behavior.
 
-## 2. Data and information flow
+## Implementation and decisions
 
-Image pixels → grayscale ROI → gradients → RANSAC → line overlay
+The connected frontend uses the Python `/api/detect` endpoint for both bundled photos and user uploads. Color selection includes white and yellow markings. Blur/Canny detect edges; a fixed trapezoidal ROI removes sky and much background. Hough provides segments and seeded RANSAC fits a line per side. Pair geometry rejects crossing or out-of-frame bottom coordinates.
 
-## 3. Why these choices
+The real-photo slope filter permits a larger perspective range than the synthetic demo. Images retain their aspect ratio and are analyzed at at most 640 × 360. Candidate status and intermediate masks remain visible so users can inspect errors.
 
-A fixed lower-image ROI, bright-pixel threshold and horizontal gradient reject much of the background. RANSAC tolerates some bright distractors, then least-squares refits the inliers. A fixed seed makes the exercise reproducible. No neural detector is claimed.
+## Data and evaluation
 
-## 4. Reproducible evidence
+Six attributed Udacity JPEGs, with source revision, upstream license and checksums. No official annotations were supplied. These known development images are an exploratory collection, not an independent test set.
 
-| Measurement | Result |
-|---|---|
-| detected scenes | 10 |
-| scene count | 10 |
-| mean width error px | 1.5178 |
-| blank image detected | False |
+Original supported pairs: 6/6. After 0.55 brightness scaling: 0/6. After 15 × 15 Gaussian blur: 5/6. See real-results.json for every case. These are output-availability counts, not lane correctness or accuracy. The poor darkened-image result exposes the fixed color thresholds.
 
-Generated at 2026-10-10T18:37:09.311034+00:00 by the Python benchmark. Read every run in [benchmark-results.json](benchmark-results.json). These results apply only to the documented benchmark. No production performance claim is made.
+## Validation
 
-## 5. What could go wrong
+18 Python behavior tests, including sample/upload equivalence through HTTP, malformed/oversized inputs, no-lane negative control, API recovery and preserved synthetic behavior. Separate JavaScript checks preserve the public legacy exercise. HTTP paths and payloads are tested against an actual Python server. A DOM integration check also executed the frontend with real API requests: sample analysis, file upload, invalid-file feedback and recovery passed. Headless visual browser verification was unavailable in the build environment; responsive layout uses a single-column breakpoint.
 
-Only straight bright lanes are supported. Curves, night, occlusions, poor contrast and arbitrary photographs can fail. A false pair of lines can be returned. Inlier ratio is geometric agreement, not a calibrated probability. The synthetic benchmark does not measure road-image accuracy.
+## Remaining gaps
 
-## 6. Next substantive improvement
+A separately annotated dataset is required for endpoint errors or lane precision/recall. Fixed ROI, illumination thresholds and straight-line models may fail on changed camera positions, shadows and curvature. There is no neural training, tracking, object detection or driving control.
 
-Añade escenas con sombras y curvas; registra cuándo falla en lugar de cambiar las imágenes para ocultarlo. Luego añade un dataset de imágenes con licencia y anotaciones, separando escenas de entrenamiento y prueba.
+## Execution surfaces
 
-Open an issue, create a branch, implement the improvement, run the checks, and explain the change in a pull request. Do not describe automated report commits as personal code development.
+Local Python and GitHub Codespaces run the connected app. Docker configuration is included. GitHub Pages remains static; it does not execute Python. No always-on public Python backend has been deployed.

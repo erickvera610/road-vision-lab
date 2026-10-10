@@ -1,82 +1,94 @@
-# Road Vision Lab
+# Road Vision Lab — real images, Python backend
 
-The original demo fitted coordinates supplied by the generator. This version extracts candidate pixels from a grayscale image and estimates lines with RANSAC. A synthetic road scene supplies known geometry; visitors can also upload a local PNG/JPEG/WebP photograph.
+An interactive classical computer-vision prototype for inspecting real road photographs. Upload a PNG/JPEG or choose one of six attributed Udacity samples. The application sends the image to Python and displays the original, color mask, road edges and estimated lane geometry.
 
-**[Open the live demo](https://erickvera610.github.io/road-vision-lab/)** · [Spanish tutorial](TUTORIAL_ES.md) · [Case study](CASE_STUDY.md) · [Measured results](benchmark-results.json)
+**[Launch in GitHub Codespaces](https://codespaces.new/erickvera610/road-vision-lab)** · [Public browser exercise](https://erickvera610.github.io/road-vision-lab/) · [Real-image report](real-results.json) · [Guía en español](GUIA_PORTAFOLIO_ES.md)
 
-## Understand it in one minute
-
-Image pixels → grayscale ROI → gradients → RANSAC → line overlay
-
-A fixed lower-image ROI, bright-pixel threshold and horizontal gradient reject much of the background. RANSAC tolerates some bright distractors, then least-squares refits the inliers. A fixed seed makes the exercise reproducible. No neural detector is claimed.
-
-## Stress evaluation and failure reporting
-
-```bash
-python stress_benchmark.py
-```
-
-The expanded benchmark includes **45 synthetic scenes**: five seeds, three noise levels and three lane intensities. Detection succeeds in **30/45**; all 15 low-contrast scenes fail. Blank and uniformly bright images return no detection. Every failure remains in [stress-results.json](stress-results.json), alongside geometric width errors for detected pairs.
-
-RANSAC now rejects line support spanning fewer than 20 vertical pixels, reducing acceptance of small bright clusters. Invalid image rows produce a clear validation error. This safeguard currently applies to the Python pipeline; the browser implementation retains its original behavior. Neither benchmark establishes performance on real roads.
-
-## Measured evidence
-
-Reproduced with Python by `python benchmark.py`. Execution timestamp is recorded in the JSON report. Synthetic JavaScript values may differ because the random generator differs.
-
-| Measurement | Result |
-|---|---|
-| detected scenes | 10 |
-| scene count | 10 |
-| mean width error px | 1.5178 |
-| blank image detected | False |
+Codespaces requires your GitHub account and available quota. It installs dependencies and opens port 8000 automatically. The Python demo is runnable locally or in your Codespace; no public always-on Python endpoint has been deployed. GitHub Pages serves the legacy JavaScript exercise and a real-output gallery, not the Python API.
 
 ## Run locally
 
-Python 3.11 or 3.12, standard library only. No API keys.
+Python 3.11 or 3.12:
 
 ```bash
 git clone https://github.com/erickvera610/road-vision-lab.git
 cd road-vision-lab
+python -m venv .venv
+# macOS/Linux: source .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
 python app.py
 ```
 
-Open http://127.0.0.1:8000. Stop with Ctrl+C. The public browser demo requires no installation.
+Open http://127.0.0.1:8000. The same application runs in Codespaces with port 8000 forwarded. If it does not open automatically, use the Ports tab and select “Open in Browser”.
 
-## Reproduce and inspect
+Optional container:
+
+```bash
+docker build -t road-vision-lab .
+docker run --rm -p 8000:8000 road-vision-lab
+```
+
+## What the Python pipeline does
+
+HSV white/yellow mask → Gaussian blur and Canny edges → trapezoidal road region → Hough line segments → seeded RANSAC → pair geometry checks.
+
+Color filtering retains yellow as well as white markings. Preserved aspect ratio avoids stretching road geometry. RANSAC requires spatial support, while pair checks reject crossing lines and impossible bottom-image positions. The UI explicitly reports insufficient evidence instead of inventing a width.
+
+The perspective slope range was widened for the real-image pipeline after exploratory inspection. The original synthetic exercise retains its defaults. This is classical image processing, not a trained neural network.
+
+## Real-image diagnostics
+
+| Condition | Supported pairs | Images |
+|---|---:|---:|
+| Original daylight photographs | 6 | 6 |
+| Brightness multiplied by 0.55 | 0 | 6 |
+| Gaussian blur, 15 × 15 kernel | 5 | 6 |
+
+These counts mean geometrically supported outputs, **not accuracy**. The six known convenience images were used during development and have no official lane annotations here. They are not a held-out test set. A straight-line overlay can approximate a curve incorrectly. Darkening exposes the fixed-brightness threshold's sensitivity.
+
+[Inspect every result](real-results.json), including failures, source revision and protocol. No lane-width distance in meters, calibrated confidence, recall or IoU is claimed. The next evaluation milestone is a separately annotated road-image dataset with scene-level separation.
+
+## Reproduce
 
 ```bash
 python -m unittest discover -v
+node test_demo.cjs
 node test_enhanced.cjs
+python real_benchmark.py
+python stress_benchmark.py
 python benchmark.py
-python daily_exercise.py
 ```
 
-Use `core.run({"mode":"pixels","seed":42,"noise":10})`. Use `core.run({"image": grayscale_array})` for your own image. The public upload runs entirely on your device.
+18 Python tests cover legacy behavior, real-photo processing, sample/upload equivalence, malformed inputs, oversized images, negative controls and API recovery. The legacy browser exercise has separate JavaScript checks. CI installs the declared dependencies and reproduces both real and synthetic reports.
 
-## Read the source
+## API
 
-- `core.py`: public algorithm entry point and preserved original exercise.
-- `pipeline.py`: featured implementation.
-- `enhanced.js`: browser implementation, readable without a build system.
-- `app.py`: localhost HTTP API.
-- `test_*.py` and `test_enhanced.cjs`: behavior and edge cases.
-- `benchmark.py`: evidence generator.
+- `GET /health`: backend availability.
+- `GET /api/samples`: the fixed sample list.
+- `POST /api/detect`: JSON with `sample` (known sample filename) or `image_base64` (PNG/JPEG bytes encoded in base64).
+- `POST /api/run`: preserved synthetic exercise API.
 
-## Limitations
+Responses contain candidate geometry, a reason, elapsed processing time and four PNG data URLs. Uploads are processed in server memory, never written to disk. Image limits: 5 MB compressed, 16 megapixels decoded, maximum dimension 8,000 px. The API does not fetch arbitrary URLs or accept filesystem paths.
 
-Only straight bright lanes are supported. Curves, night, occlusions, poor contrast and arbitrary photographs can fail. A false pair of lines can be returned. Inlier ratio is geometric agreement, not a calibrated probability. The synthetic benchmark does not measure road-image accuracy.
+## Source map
 
-## Daily practical exercises
+- `real_pipeline.py`: real-photo processing.
+- `image_header.py`: pre-decode PNG/JPEG dimension checks.
+- `app.py` and `index.html`: Python HTTP API and connected UI.
+- `real_benchmark.py`: real-photo sensitivity report.
+- `pipeline.py`: retained grayscale/synthetic RANSAC exercise.
+- `test_real_api.py`: HTTP and decoder behavior tests.
+- `.devcontainer/`: runnable GitHub Codespaces configuration.
 
-One dated fictional scenario runs daily through GitHub Actions. `exercises/YYYY-MM-DD/result.json` preserves inputs and outputs; `samples/latest.json` holds the latest input. Bot-authored report commits document script execution, not manual daily development. [Daily Spanish guide](EJERCICIOS_DIARIOS_ES.md).
+## Data provenance and limitations
 
-## Authorship and relevance
+Six JPEGs copied unchanged from [Udacity CarND-LaneLines-P1](https://github.com/udacity/CarND-LaneLines-P1), revision `ce5681be7ef8140560c0e464ef2da611e40b4fc9`. Source URLs and SHA-256 checksums are in [data/real/manifest.json](data/real/manifest.json). The upstream MIT license is retained in [data/real/LICENSE.udacity](data/real/LICENSE.udacity).
 
-Independent AI-assisted learning project in Erik Vera's portfolio. No affiliation with FOX, Tesla or BCG. The documentation distinguishes supplied implementation from improvements the learner actually makes. Code is MIT licensed; third-party data provenance is documented separately.
+Daylight bias, a fixed camera ROI, straight-line approximation, no temporal tracking, no object recognition and no official annotations limit this prototype. Shadows, curves, worn markings and camera changes may fail. Geometric agreement is not correctness. This is an independent AI-assisted learning project in Erik Vera's portfolio, with no employer affiliation or driving-control claim.
 
 ## Three featured portfolio projects
 
-- [ML Model Lab](https://github.com/erickvera610/ml-model-lab): model selection and public-data evaluation.
-- [Road Vision Lab](https://github.com/erickvera610/road-vision-lab): image processing and explicit failure analysis.
-- [Media Content Lab](https://github.com/erickvera610/media-content-lab): regression and chronological evaluation.
+- [ML Model Lab](https://github.com/erickvera610/ml-model-lab)
+- [Road Vision Lab](https://github.com/erickvera610/road-vision-lab)
+- [Media Content Lab](https://github.com/erickvera610/media-content-lab)

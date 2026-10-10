@@ -1,0 +1,223 @@
+{
+  "executed_at_utc": "2026-10-10T19:16:10.079378+00:00",
+  "opencv_version": "4.13.0",
+  "source_commit": "ce5681be7ef8140560c0e464ef2da611e40b4fc9",
+  "image_count": 6,
+  "original_supported_pairs": 6,
+  "darkened_supported_pairs": 0,
+  "blurred_supported_pairs": 5,
+  "protocol": "Fixed defaults, same six known convenience samples; no learned model, no train/test split. Brightness and blur perturbations reuse each original.",
+  "limitations": "No official annotations. Supported-pair counts are not accuracy, IoU, recall or lane correctness. Samples were used during development and are not a held-out evaluation.",
+  "results": [
+    {
+      "filename": "solidWhiteCurve.jpg",
+      "original": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "left": {
+          "slope": -1.358893779501355,
+          "intercept": 603.5595901198478,
+          "inliers": 53,
+          "candidate_count": 60,
+          "inlier_ratio": 0.8833333333333333,
+          "rmse": 2.2389662222565905
+        },
+        "right": {
+          "slope": 1.7021218886451421,
+          "intercept": -26.301566310007217,
+          "inliers": 35,
+          "candidate_count": 48,
+          "inlier_ratio": 0.7291666666666666,
+          "rmse": 2.6384945735660312
+        },
+        "accepted_segments": 9,
+        "width_bottom_px": 469.0434684347374,
+        "width": 640,
+        "height": 360
+      },
+      "darkened": {
+        "detected": false,
+        "reason": "Insufficient support for a two-line pair"
+      },
+      "blurred": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness"
+      }
+    },
+    {
+      "filename": "solidWhiteRight.jpg",
+      "original": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "left": {
+          "slope": -1.4624674623001332,
+          "intercept": 620.5046988022702,
+          "inliers": 47,
+          "candidate_count": 48,
+          "inlier_ratio": 0.9791666666666666,
+          "rmse": 2.8764114206577345
+        },
+        "right": {
+          "slope": 1.5059854717921597,
+          "intercept": 13.821564425483189,
+          "inliers": 56,
+          "candidate_count": 72,
+          "inlier_ratio": 0.7777777777777778,
+          "rmse": 1.988869163691057
+        },
+        "accepted_segments": 10,
+        "width_bottom_px": 458.9914689623463,
+        "width": 640,
+        "height": 360
+      },
+      "darkened": {
+        "detected": false,
+        "reason": "Insufficient support for a two-line pair"
+      },
+      "blurred": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness"
+      }
+    },
+    {
+      "filename": "solidYellowCurve.jpg",
+      "original": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "left": {
+          "slope": -1.4254505070836323,
+          "intercept": 614.1109647770655,
+          "inliers": 69,
+          "candidate_count": 96,
+          "inlier_ratio": 0.71875,
+          "rmse": 1.8113421712984255
+        },
+        "right": {
+          "slope": 1.6831308742572015,
+          "intercept": -33.19927098327321,
+          "inliers": 45,
+          "candidate_count": 48,
+          "inlier_ratio": 0.9375,
+          "rmse": 2.7278485187149
+        },
+        "accepted_segments": 12,
+        "width_bottom_px": 468.67048014102045,
+        "width": 640,
+        "height": 360
+      },
+      "darkened": {
+        "detected": false,
+        "reason": "Insufficient support for a two-line pair"
+      },
+      "blurred": {
+        "detected": false,
+        "reason": "Insufficient support for a two-line pair"
+      }
+    },
+    {
+      "filename": "solidYellowCurve2.jpg",
+      "original": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "left": {
+          "slope": -1.2864280262027616,
+          "intercept": 581.6032739444217,
+          "inliers": 56,
+          "candidate_count": 72,
+          "inlier_ratio": 0.7777777777777778,
+          "rmse": 2.0635718614509333
+        },
+        "right": {
+          "slope": 1.7223435340568134,
+          "intercept": -35.9026142644347,
+          "inliers": 48,
+          "candidate_count": 72,
+          "inlier_ratio": 0.6666666666666666,
+          "rmse": 2.5142811665877245
+        },
+        "accepted_segments": 12,
+        "width_bottom_px": 462.64310192433095,
+        "width": 640,
+        "height": 360
+      },
+      "darkened": {
+        "detected": false,
+        "reason": "Insufficient support for a two-line pair"
+      },
+      "blurred": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness"
+      }
+    },
+    {
+      "filename": "solidYellowLeft.jpg",
+      "original": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "left": {
+          "slope": -1.3528804302392734,
+          "intercept": 591.9257324125731,
+          "inliers": 50,
+          "candidate_count": 72,
+          "inlier_ratio": 0.6944444444444444,
+          "rmse": 2.5138921826857805
+        },
+        "right": {
+          "slope": 1.5182457705796348,
+          "intercept": 13.099398951204364,
+          "inliers": 52,
+          "candidate_count": 72,
+          "inlier_ratio": 0.7222222222222222,
+          "rmse": 2.344426297300788
+        },
+        "accepted_segments": 12,
+        "width_bottom_px": 451.9079726326195,
+        "width": 640,
+        "height": 360
+      },
+      "darkened": {
+        "detected": false,
+        "reason": "Insufficient support for a two-line pair"
+      },
+      "blurred": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness"
+      }
+    },
+    {
+      "filename": "whiteCarLaneSwitch.jpg",
+      "original": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "left": {
+          "slope": -1.2557854155314616,
+          "intercept": 581.2754212403402,
+          "inliers": 52,
+          "candidate_count": 84,
+          "inlier_ratio": 0.6190476190476191,
+          "rmse": 2.4173372735137324
+        },
+        "right": {
+          "slope": 1.7706756413763483,
+          "intercept": -46.373223817875214,
+          "inliers": 84,
+          "candidate_count": 96,
+          "inlier_ratio": 0.875,
+          "rmse": 1.931185988656235
+        },
+        "accepted_segments": 15,
+        "width_bottom_px": 458.8508743716884,
+        "width": 640,
+        "height": 360
+      },
+      "darkened": {
+        "detected": false,
+        "reason": "Insufficient support for a two-line pair"
+      },
+      "blurred": {
+        "detected": true,
+        "reason": "Two candidate lines; inspect overlay for correctness"
+      }
+    }
+  ]
+}
