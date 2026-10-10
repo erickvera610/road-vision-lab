@@ -10,6 +10,16 @@ Image pixels → grayscale ROI → gradients → RANSAC → line overlay
 
 A fixed lower-image ROI, bright-pixel threshold and horizontal gradient reject much of the background. RANSAC tolerates some bright distractors, then least-squares refits the inliers. A fixed seed makes the exercise reproducible. No neural detector is claimed.
 
+## Stress evaluation and failure reporting
+
+```bash
+python stress_benchmark.py
+```
+
+The expanded benchmark includes **45 synthetic scenes**: five seeds, three noise levels and three lane intensities. Detection succeeds in **30/45**; all 15 low-contrast scenes fail. Blank and uniformly bright images return no detection. Every failure remains in [stress-results.json](stress-results.json), alongside geometric width errors for detected pairs.
+
+RANSAC now rejects line support spanning fewer than 20 vertical pixels, reducing acceptance of small bright clusters. Invalid image rows produce a clear validation error. This safeguard currently applies to the Python pipeline; the browser implementation retains its original behavior. Neither benchmark establishes performance on real roads.
+
 ## Measured evidence
 
 Reproduced with Python by `python benchmark.py`. Execution timestamp is recorded in the JSON report. Synthetic JavaScript values may differ because the random generator differs.
@@ -65,10 +75,8 @@ One dated fictional scenario runs daily through GitHub Actions. `exercises/YYYY-
 
 Independent AI-assisted learning project in Erik Vera's portfolio. No affiliation with FOX, Tesla or BCG. The documentation distinguishes supplied implementation from improvements the learner actually makes. Code is MIT licensed; third-party data provenance is documented separately.
 
-## Featured portfolio
+## Three featured portfolio projects
 
-- [Road Vision Lab](https://github.com/erickvera610/road-vision-lab)
-- [Demand Forecasting Lab](https://github.com/erickvera610/consulting-demand-lab)
-- [Media Prediction Lab](https://github.com/erickvera610/media-content-lab)
-- [Classification Evaluation Lab](https://github.com/erickvera610/ml-model-lab)
-- [Incident Workflow Lab](https://github.com/erickvera610/incident-response-lab)
+- [ML Model Lab](https://github.com/erickvera610/ml-model-lab): model selection and public-data evaluation.
+- [Road Vision Lab](https://github.com/erickvera610/road-vision-lab): image processing and explicit failure analysis.
+- [Media Content Lab](https://github.com/erickvera610/media-content-lab): regression and chronological evaluation.

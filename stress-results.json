@@ -1,0 +1,324 @@
+{
+  "conditions": [
+    {
+      "noise": 0,
+      "lane_intensity": 230,
+      "seed": 0,
+      "detected": true,
+      "width_error_px": 2.251307690287021
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 230,
+      "seed": 1,
+      "detected": true,
+      "width_error_px": 1.6462135324299112
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 230,
+      "seed": 2,
+      "detected": true,
+      "width_error_px": 2.625106929965682
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 230,
+      "seed": 3,
+      "detected": true,
+      "width_error_px": 1.8778262759098254
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 230,
+      "seed": 4,
+      "detected": true,
+      "width_error_px": 0.42736190290756326
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 160,
+      "seed": 0,
+      "detected": true,
+      "width_error_px": 4.43884742716088
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 160,
+      "seed": 1,
+      "detected": true,
+      "width_error_px": 4.591235079469641
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 160,
+      "seed": 2,
+      "detected": true,
+      "width_error_px": 0.8139821238136733
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 160,
+      "seed": 3,
+      "detected": true,
+      "width_error_px": 0.360188370773443
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 160,
+      "seed": 4,
+      "detected": true,
+      "width_error_px": 1.9659712055829175
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 100,
+      "seed": 0,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 100,
+      "seed": 1,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 100,
+      "seed": 2,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 100,
+      "seed": 3,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 0,
+      "lane_intensity": 100,
+      "seed": 4,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 230,
+      "seed": 0,
+      "detected": true,
+      "width_error_px": 2.251307690287021
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 230,
+      "seed": 1,
+      "detected": true,
+      "width_error_px": 1.6462135324299112
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 230,
+      "seed": 2,
+      "detected": true,
+      "width_error_px": 2.625106929965682
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 230,
+      "seed": 3,
+      "detected": true,
+      "width_error_px": 1.8778262759098254
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 230,
+      "seed": 4,
+      "detected": true,
+      "width_error_px": 0.42736190290756326
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 160,
+      "seed": 0,
+      "detected": true,
+      "width_error_px": 4.43884742716088
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 160,
+      "seed": 1,
+      "detected": true,
+      "width_error_px": 4.591235079469641
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 160,
+      "seed": 2,
+      "detected": true,
+      "width_error_px": 0.8139821238136733
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 160,
+      "seed": 3,
+      "detected": true,
+      "width_error_px": 0.360188370773443
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 160,
+      "seed": 4,
+      "detected": true,
+      "width_error_px": 1.9659712055829175
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 100,
+      "seed": 0,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 100,
+      "seed": 1,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 100,
+      "seed": 2,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 100,
+      "seed": 3,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 10,
+      "lane_intensity": 100,
+      "seed": 4,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 230,
+      "seed": 0,
+      "detected": true,
+      "width_error_px": 2.814416920647659
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 230,
+      "seed": 1,
+      "detected": true,
+      "width_error_px": 0.14325443795866022
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 230,
+      "seed": 2,
+      "detected": true,
+      "width_error_px": 2.654301308367252
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 230,
+      "seed": 3,
+      "detected": true,
+      "width_error_px": 3.210708719846366
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 230,
+      "seed": 4,
+      "detected": true,
+      "width_error_px": 0.06798258682547953
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 160,
+      "seed": 0,
+      "detected": true,
+      "width_error_px": 4.43884742716088
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 160,
+      "seed": 1,
+      "detected": true,
+      "width_error_px": 4.591235079469641
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 160,
+      "seed": 2,
+      "detected": true,
+      "width_error_px": 0.8139821238136733
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 160,
+      "seed": 3,
+      "detected": true,
+      "width_error_px": 3.9835794169812573
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 160,
+      "seed": 4,
+      "detected": true,
+      "width_error_px": 1.9659712055829175
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 100,
+      "seed": 0,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 100,
+      "seed": 1,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 100,
+      "seed": 2,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 100,
+      "seed": 3,
+      "detected": false,
+      "width_error_px": null
+    },
+    {
+      "noise": 30,
+      "lane_intensity": 100,
+      "seed": 4,
+      "detected": false,
+      "width_error_px": null
+    }
+  ],
+  "negative_controls": {
+    "blank": false,
+    "bright_wall": false
+  },
+  "limitations": "Synthetic straight lanes only. Missing detections are retained. These conditions are not real-world accuracy estimates."
+}

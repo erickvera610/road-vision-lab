@@ -17,6 +17,8 @@ def synthetic_image(seed=42, noise=4, width=256, height=144):
 def validate_image(image):
     if not isinstance(image, list) or not 24 <= len(image) <= 360:
         raise ValueError('Image height must be 24–360')
+    if not isinstance(image[0], list):
+        raise ValueError('Rows must be lists')
     w = len(image[0])
     if not 32 <= w <= 640 or any((not isinstance(row, list) or len(row) != w for row in image)):
         raise ValueError('Rectangular width 32–640 required')
@@ -51,7 +53,7 @@ def ransac(points, seed, expected_sign, iterations=120, tolerance=3):
         kept = [(x, y) for x, y in points if abs(x - a * y - b) <= tolerance]
         if len(kept) > len(best):
             best = kept
-    if len(best) < 8:
+    if len(best) < 8 or max(y for x, y in best) - min(y for x, y in best) < 20:
         return None
     a, b = fit(best)
     return {'slope': a, 'intercept': b, 'inliers': len(best), 'candidate_count': len(points), 'inlier_ratio': len(best) / len(points), 'rmse': math.sqrt(sum(((x - a * y - b) ** 2 for x, y in best)) / len(best)), 'points': best}
