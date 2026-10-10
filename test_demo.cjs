@@ -1,0 +1,1 @@
+const assert=require('node:assert/strict');const {run}=require('./docs/demo.js');const p={"noise": 4};assert.deepEqual(run(p),run(p));assert.ok(JSON.stringify(run(p)).length>100);console.log('Browser exercise passed');
