@@ -47,7 +47,7 @@ class Handler(BaseHTTPRequestHandler):
             elif isinstance(payload.get('image_base64'),str):
                 data=base64.b64decode(payload['image_base64'],validate=True)
             else:raise ValueError('Provide sample name or image_base64')
-            self.send(200,run_bytes(data))
+            self.send(200,run_bytes(data, payload.get('lighting', 'adaptive')))
         except (ValueError,TypeError,KeyError,OverflowError,binascii.Error) as exc:
             self.send(400,{'error':str(exc)})
         except Exception:

@@ -14,9 +14,9 @@ def benchmark():
         if hashlib.sha256(data).hexdigest()!=item['sha256']:
             raise ValueError('Sample checksum mismatch')
         image=decode(data)
-        base=detect(image)
-        dark=detect(cv2.convertScaleAbs(image,alpha=.55))
-        blur=detect(cv2.GaussianBlur(image,(15,15),0))
+        base=detect(image,"fixed")
+        dark=detect(cv2.convertScaleAbs(image,alpha=.55),"fixed")
+        blur=detect(cv2.GaussianBlur(image,(15,15),0),"fixed")
         keys=['detected','reason','left','right','accepted_segments','width_bottom_px','width','height']
         rows.append({'filename':item['filename'],'original':{k:base[k] for k in keys},
                      'darkened':{'detected':dark['detected'],'reason':dark['reason']},

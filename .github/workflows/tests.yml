@@ -28,3 +28,14 @@ jobs:
 
       - name: Reproduce real-image diagnostics
         run: python real_benchmark.py
+
+      - run: python lighting_benchmark.py
+
+      - name: Upload reproducible experiment evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-evidence-${{ matrix.python }}
+          path: |
+            lighting-results.json
+            real-results.json
+          retention-days: 30

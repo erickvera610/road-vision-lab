@@ -34,3 +34,10 @@ Para repetir: instala requirements.txt, ejecuta `python real_benchmark.py` y abr
 “I built a Python-backed demo that processes real road photographs. It combines color filtering, edge detection, Hough segments and RANSAC. I evaluated output availability under brightness and blur changes. The main limitation is sensitivity to lighting and curved lanes. The sample collection does not provide verified accuracy.”
 
 Aprende a explicar por qué escogimos estos pasos y qué cambiarías. Distingue la ayuda de IA de las decisiones que comprendes y puedes defender.
+
+
+## Mejoras del 11 de octubre de 2026
+
+Añadimos una normalización de iluminación y la comparamos con la versión fija. En las seis fotos oscurecidas, la versión fija no apoyó pares y la adaptativa sí. Eso no significa exactitud de 100%: seguimos sin etiquetas oficiales de carriles. Usa el selector Lighting method y ejecuta lighting_benchmark.py.
+
+La página evidence.html conecta resultados, pruebas y código para un revisor. RECRUITER_GUIDE.md relaciona capacidades demostradas con áreas de tus candidaturas y señala lo que estos proyectos todavía no demuestran.

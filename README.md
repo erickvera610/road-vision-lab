@@ -1,5 +1,30 @@
 # Road Vision Lab — real images, Python backend
 
+![Tests](https://github.com/erickvera610/road-vision-lab/actions/workflows/tests.yml/badge.svg)
+
+## New: paired illumination ablation
+
+**[Reviewer evidence](RECRUITER_GUIDE.md)** · [Paired report](lighting-results.json) · [Public evidence page](https://erickvera610.github.io/road-vision-lab/evidence.html) · [CI tests](https://github.com/erickvera610/road-vision-lab/actions/workflows/tests.yml)
+
+Compare the preserved fixed-threshold detector with ROI percentile illumination normalization. The Python demo now defaults to adaptive illumination and lets you choose the fixed baseline.
+
+| Known development images | Fixed supported pairs | Adaptive supported pairs |
+|---|---:|---:|
+| Original daylight | 6/6 | 6/6 |
+| Brightness × 0.55 | 0/6 | 6/6 |
+| Brightness × 0.35 | 0/6 | 6/6 |
+| Blur 15 × 15 | 5/6 | 5/6 |
+
+Blank and bright-wall controls have no supported pair in either mode. This ablation shows output availability under controlled perturbations, **not lane accuracy**. All six source images were previously used for development. Normalization can amplify distractors; independent annotated evaluation remains a gap. Existing `real-results.json` describes the fixed baseline; `lighting-results.json` compares both methods.
+
+```bash
+python lighting_benchmark.py
+python -m unittest discover -v
+```
+
+The road pipeline remains classical computer vision, without a trained lane neural network. Neural training is demonstrated in ML Model Lab separately.
+
+
 An interactive classical computer-vision prototype for inspecting real road photographs. Upload a PNG/JPEG or choose one of six attributed Udacity samples. The application sends the image to Python and displays the original, color mask, road edges and estimated lane geometry.
 
 **[Launch in GitHub Codespaces](https://codespaces.new/erickvera610/road-vision-lab)** · [Public browser exercise](https://erickvera610.github.io/road-vision-lab/) · [Real-image report](real-results.json) · [Guía en español](GUIA_PORTAFOLIO_ES.md)

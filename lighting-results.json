@@ -1,0 +1,372 @@
+{
+  "executed_at_utc": "2026-10-11T18:40:15.511492+00:00",
+  "comparison": {
+    "original": {
+      "fixed": 6,
+      "adaptive": 6
+    },
+    "dark_55": {
+      "fixed": 0,
+      "adaptive": 6
+    },
+    "dark_35": {
+      "fixed": 0,
+      "adaptive": 6
+    },
+    "blur_15": {
+      "fixed": 5,
+      "adaptive": 5
+    }
+  },
+  "negative_controls": {
+    "blank": {
+      "fixed": false,
+      "adaptive": false
+    },
+    "bright_wall": {
+      "fixed": false,
+      "adaptive": false
+    }
+  },
+  "source_manifest": "data/real/manifest.json",
+  "protocol": "Paired known development photos, each unchanged or under fixed brightness/blur transformations. No labels or new test scenes.",
+  "limitations": "Output availability is not verified accuracy. Normalization can amplify distractors. These six previously inspected photos are development examples, not an independent robustness benchmark.",
+  "cases": [
+    {
+      "image": "solidWhiteCurve.jpg",
+      "condition": "original",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 469.0434684347374
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 453.2758134407741
+      }
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "condition": "dark_55",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 478.5994432194269
+      }
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "condition": "dark_35",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 451.9342837078393
+      }
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "condition": "blur_15",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 429.7926080706819
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 477.80517975160296
+      }
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "condition": "original",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 458.9914689623463
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 463.58257149779797
+      }
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "condition": "dark_55",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 442.1782616742812
+      }
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "condition": "dark_35",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 463.08774247061797
+      }
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "condition": "blur_15",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 411.19532656800595
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 412.18766407417684
+      }
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "condition": "original",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 468.67048014102045
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 462.2747513602271
+      }
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "condition": "dark_55",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 441.73149172972865
+      }
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "condition": "dark_35",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 436.3983129862769
+      }
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "condition": "blur_15",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      }
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "condition": "original",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 462.64310192433095
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 445.61843546942885
+      }
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "condition": "dark_55",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 446.78662286609654
+      }
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "condition": "dark_35",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 463.2401549973738
+      }
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "condition": "blur_15",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 479.9653860940301
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 463.84968542652734
+      }
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "condition": "original",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 451.9079726326195
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 464.7063476640284
+      }
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "condition": "dark_55",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 464.53004445440115
+      }
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "condition": "dark_35",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 447.720205026689
+      }
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "condition": "blur_15",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 468.45388102695347
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 467.59504986317836
+      }
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "condition": "original",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 458.8508743716884
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 443.3944334860629
+      }
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "condition": "dark_55",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 459.1654832536676
+      }
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "condition": "dark_35",
+      "fixed": {
+        "supported_pair": false,
+        "reason": "Insufficient support for a two-line pair",
+        "width_bottom_px": null
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 473.7310145070718
+      }
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "condition": "blur_15",
+      "fixed": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 442.65719873138823
+      },
+      "adaptive": {
+        "supported_pair": true,
+        "reason": "Two candidate lines; inspect overlay for correctness",
+        "width_bottom_px": 458.4907248083234
+      }
+    }
+  ]
+}

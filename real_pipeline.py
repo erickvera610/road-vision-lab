@@ -26,17 +26,28 @@ def decode(data):
         raise ValueError('Invalid PNG/JPEG image')
     return image
 
-def detect(image):
+def detect(image, lighting="adaptive"):
+    if lighting not in ["fixed", "adaptive"]:
+        raise ValueError("Lighting must be fixed or adaptive")
     start = time.perf_counter()
     original_h, original_w = image.shape[:2]
     factor = min(1, 640 / original_w, 360 / original_h)
     w, h = round(original_w * factor), round(original_h * factor)
     image = cv2.resize(image, (w, h), interpolation=cv2.INTER_AREA)
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    # Normalize illumination only for detection; preserve the original display image.
+    processing = image
+    if lighting == 'adaptive':
+        value = hsv[:, :, 2].astype(np.float32)
+        region = value[int(h*.60):, int(w*.08):int(w*.95)]
+        lo, hi = np.percentile(region, [2, 98])
+        if hi - lo > 5:
+            hsv[:, :, 2] = np.clip((value - lo) * (230.0/(hi - lo)), 0, 255).astype(np.uint8)
+            processing = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
     white = cv2.inRange(hsv, np.array([0,0,170]), np.array([179,85,255]))
     yellow = cv2.inRange(hsv, np.array([15,65,80]), np.array([40,255,255]))
     color = cv2.bitwise_or(white,yellow)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(processing, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(cv2.GaussianBlur(gray,(5,5),0),50,150)
     edges = cv2.bitwise_and(edges, cv2.dilate(color,np.ones((3,3),np.uint8)))
     roi = np.array([[(int(w*.08),h-1),(int(w*.44),int(h*.60)),(int(w*.57),int(h*.60)),(int(w*.95),h-1)]],np.int32)
@@ -81,10 +92,11 @@ def detect(image):
     return {'detected':accepted,'reason':reason,'width':w,'height':h,'original_width':original_w,'original_height':original_h,
             'left':clean(left),'right':clean(right),'accepted_segments':count,
             'width_bottom_px':float((right['slope']-left['slope'])*bottom+right['intercept']-left['intercept']) if accepted else None,
+            'lighting_mode':lighting,
             'elapsed_ms':round((time.perf_counter()-start)*1000,2),
             'images':{'original':png(image),'overlay':png(overlay),'edges':png(edges),'color_mask':png(color)},
-            'method':'HSV white/yellow mask → blur/Canny → trapezoid ROI → Hough segments → seeded RANSAC → geometry check',
+            'method':'Optional ROI percentile illumination normalization → HSV white/yellow mask → blur/Canny → trapezoid ROI → Hough segments → seeded RANSAC → geometry check',
             'limitations':'Straight-line approximation, daylight bias. Detected is geometric support, not verified correctness or calibrated confidence. Width is pixels, not meters.'}
 
-def run_bytes(data):
-    return detect(decode(data))
+def run_bytes(data, lighting="adaptive"):
+    return detect(decode(data), lighting)
