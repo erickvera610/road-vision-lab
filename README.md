@@ -2,6 +2,8 @@
 
 ![Tests](https://github.com/erickvera610/road-vision-lab/actions/workflows/tests.yml/badge.svg)
 
+> **Recruiter quick view:** real road photographs, Python/OpenCV pipeline, explicit failure analysis, robustness matrix, API validation, Docker/Codespaces, tests, and CI. Start with [RECRUITER_OVERVIEW.md](RECRUITER_OVERVIEW.md), [PORTFOLIO_EVIDENCE.md](PORTFOLIO_EVIDENCE.md), the [public evidence page](https://erickvera610.github.io/road-vision-lab/evidence.html), and `robustness_matrix.py`.
+
 ## New: paired illumination ablation
 
 **[Reviewer evidence](RECRUITER_GUIDE.md)** · [Paired report](lighting-results.json) · [Public evidence page](https://erickvera610.github.io/road-vision-lab/evidence.html) · [CI tests](https://github.com/erickvera610/road-vision-lab/actions/workflows/tests.yml)
@@ -19,11 +21,13 @@ Blank and bright-wall controls have no supported pair in either mode. This ablat
 
 ```bash
 python lighting_benchmark.py
+python robustness_matrix.py
 python -m unittest discover -v
 ```
 
-The road pipeline remains classical computer vision, without a trained lane neural network. Neural training is demonstrated in ML Model Lab separately.
+`robustness_matrix.py` expands the stress protocol to original, dark, bright, blur, and noise conditions for both fixed and adaptive lighting modes. It reports supported-pair counts and per-image reasons, not accuracy.
 
+The road pipeline remains classical computer vision, without a trained lane neural network. Neural training is demonstrated in ML Model Lab separately.
 
 An interactive classical computer-vision prototype for inspecting real road photographs. Upload a PNG/JPEG or choose one of six attributed Udacity samples. The application sends the image to Python and displays the original, color mask, road edges and estimated lane geometry.
 
@@ -82,6 +86,7 @@ node test_demo.cjs
 node test_enhanced.cjs
 python real_benchmark.py
 python stress_benchmark.py
+python robustness_matrix.py
 python benchmark.py
 ```
 
@@ -102,6 +107,7 @@ Responses contain candidate geometry, a reason, elapsed processing time and four
 - `image_header.py`: pre-decode PNG/JPEG dimension checks.
 - `app.py` and `index.html`: Python HTTP API and connected UI.
 - `real_benchmark.py`: real-photo sensitivity report.
+- `robustness_matrix.py`: expanded controlled perturbation matrix.
 - `pipeline.py`: retained grayscale/synthetic RANSAC exercise.
 - `test_real_api.py`: HTTP and decoder behavior tests.
 - `.devcontainer/`: runnable GitHub Codespaces configuration.
