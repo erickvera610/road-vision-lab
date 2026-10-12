@@ -19,18 +19,15 @@ jobs:
         with:
           node-version: 22
       - run: node test_demo.cjs
-
       - name: Check enhanced browser behavior
         run: node test_enhanced.cjs
       - name: Reproduce case study
         run: python benchmark.py
-
-
       - name: Reproduce real-image diagnostics
         run: python real_benchmark.py
-
       - run: python lighting_benchmark.py
-
+      - name: Run expanded robustness matrix
+        run: python robustness_matrix.py
       - name: Upload reproducible experiment evidence
         uses: actions/upload-artifact@v4
         with:
@@ -38,4 +35,5 @@ jobs:
           path: |
             lighting-results.json
             real-results.json
+            robustness-matrix-results.json
           retention-days: 30
