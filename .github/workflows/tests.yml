@@ -37,3 +37,12 @@ jobs:
             real-results.json
             robustness-matrix-results.json
           retention-days: 30
+  container-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t road-vision-lab .
+      - run: docker run -d --name road-vision-lab -p 8000:8000 road-vision-lab
+      - run: sleep 3 && curl --fail http://127.0.0.1:8000/health
+      - if: always()
+        run: docker rm -f road-vision-lab || true
