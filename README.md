@@ -4,7 +4,11 @@
 
 > **Recruiter quick view:** real road photographs, Python/OpenCV pipeline, explicit failure analysis, robustness matrix, API validation, Docker/Codespaces, tests, and CI. Start with [RECRUITER_OVERVIEW.md](RECRUITER_OVERVIEW.md), [PORTFOLIO_EVIDENCE.md](PORTFOLIO_EVIDENCE.md), the [public evidence page](https://erickvera610.github.io/road-vision-lab/evidence.html), and `robustness_matrix.py`.
 
-## New: paired illumination ablation
+## New: paired geometry stability audit
+
+[Reproduce the geometry audit](GEOMETRY_AUDIT.md): track endpoint displacement and lost support across 72 paired comparisons. On one blurred image, adaptive detection still returns two lines while an endpoint moves 50.75 pixels. This measures prediction stability, not annotated lane accuracy. Includes raw endpoints, source/code hashes and four new tests; 24 Python tests pass locally.
+
+## Paired illumination ablation
 
 **[Reviewer evidence](RECRUITER_GUIDE.md)** · [Paired report](lighting-results.json) · [Public evidence page](https://erickvera610.github.io/road-vision-lab/evidence.html) · [CI tests](https://github.com/erickvera610/road-vision-lab/actions/workflows/tests.yml)
 
@@ -90,7 +94,7 @@ python robustness_matrix.py
 python benchmark.py
 ```
 
-18 Python tests cover legacy behavior, real-photo processing, sample/upload equivalence, malformed inputs, oversized images, negative controls and API recovery. The legacy browser exercise has separate JavaScript checks. CI installs the declared dependencies and reproduces both real and synthetic reports.
+24 Python tests cover legacy behavior, real-photo processing, sample/upload equivalence, malformed inputs, oversized images, negative controls and API recovery. The legacy browser exercise has separate JavaScript checks. CI installs the declared dependencies and reproduces both real and synthetic reports.
 
 ## API
 
