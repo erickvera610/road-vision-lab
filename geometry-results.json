@@ -1,0 +1,1609 @@
+{
+  "interpretation": "Stability relative to the original prediction, NOT lane accuracy. Null drift is an unavailable comparison, never zero error.",
+  "limitations": "No official ground-truth lane annotations supplied. Small convenience collection used for exploratory diagnostics, not an independent held-out benchmark.",
+  "endpoint_order": [
+    "left_top",
+    "left_bottom",
+    "right_top",
+    "right_bottom"
+  ],
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "opencv": "4.13.0"
+  },
+  "code_sha256": {
+    "geometry_audit.py": "8123ef9e5e03c79e2f76f4e4adde923c44ecf657d494525cf4e71c476fba51f0",
+    "real_pipeline.py": "64f6c65e91f237b55e9cebc7101ae0f724cfca74ef69a76ba0c85be0dcd07de9",
+    "pipeline.py": "4748bfeca92f3088ff3e7a2c2db446c3aa8214d24a68150899155145760a7891",
+    "robustness_matrix.py": "f2f4cb862c5c830ca0d3e3955e4b70ece6dca6212602e2447cb391319d14fe58"
+  },
+  "rows": [
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "original",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.03853374755516,
+        115.71672327886142,
+        341.3567616373435,
+        584.7601917135987
+      ],
+      "perturbed_endpoints_px": [
+        310.03853374755516,
+        115.71672327886142,
+        341.3567616373435,
+        584.7601917135987
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "dark_55",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        310.03853374755516,
+        115.71672327886142,
+        341.3567616373435,
+        584.7601917135987
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "dark_35",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        310.03853374755516,
+        115.71672327886142,
+        341.3567616373435,
+        584.7601917135987
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "bright_125",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.03853374755516,
+        115.71672327886142,
+        341.3567616373435,
+        584.7601917135987
+      ],
+      "perturbed_endpoints_px": [
+        308.78942276683375,
+        113.14453107576082,
+        337.99657182293697,
+        598.4454870705517
+      ],
+      "max_endpoint_drift_px": 13.68529535695302,
+      "max_endpoint_drift_fraction_width": 0.021383273995239094
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "blur_15",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.03853374755516,
+        115.71672327886142,
+        341.3567616373435,
+        584.7601917135987
+      ],
+      "perturbed_endpoints_px": [
+        276.8802500295217,
+        152.46366807897795,
+        345.09882769778267,
+        582.2562761496599
+      ],
+      "max_endpoint_drift_px": 36.74694480011652,
+      "max_endpoint_drift_fraction_width": 0.05741710125018207
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "noise_sigma_12",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.03853374755516,
+        115.71672327886142,
+        341.3567616373435,
+        584.7601917135987
+      ],
+      "perturbed_endpoints_px": [
+        307.8313779224284,
+        117.34867046228999,
+        336.76770931669705,
+        600.4515101599541
+      ],
+      "max_endpoint_drift_px": 15.691318446355353,
+      "max_endpoint_drift_fraction_width": 0.02451768507243024
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "original",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        305.6305635035031,
+        131.26887571332463,
+        340.42655648508133,
+        584.5446891540987
+      ],
+      "perturbed_endpoints_px": [
+        305.6305635035031,
+        131.26887571332463,
+        340.42655648508133,
+        584.5446891540987
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "dark_55",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        305.6305635035031,
+        131.26887571332463,
+        340.42655648508133,
+        584.5446891540987
+      ],
+      "perturbed_endpoints_px": [
+        305.25911080261864,
+        121.30289097756196,
+        338.01755515574683,
+        600.0765738579003
+      ],
+      "max_endpoint_drift_px": 15.531884703801552,
+      "max_endpoint_drift_fraction_width": 0.024268569849689926
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "dark_35",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        305.6305635035031,
+        131.26887571332463,
+        340.42655648508133,
+        584.5446891540987
+      ],
+      "perturbed_endpoints_px": [
+        308.0094284866004,
+        117.14372893342465,
+        337.95591680886054,
+        598.8293250659408
+      ],
+      "max_endpoint_drift_px": 14.284635911842088,
+      "max_endpoint_drift_fraction_width": 0.02231974361225326
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "bright_125",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        305.6305635035031,
+        131.26887571332463,
+        340.42655648508133,
+        584.5446891540987
+      ],
+      "perturbed_endpoints_px": [
+        308.44240144558734,
+        117.31637310162665,
+        339.9766081871345,
+        599.8229552755126
+      ],
+      "max_endpoint_drift_px": 15.278266121413935,
+      "max_endpoint_drift_fraction_width": 0.023872290814709273
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "blur_15",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        305.6305635035031,
+        131.26887571332463,
+        340.42655648508133,
+        584.5446891540987
+      ],
+      "perturbed_endpoints_px": [
+        299.98709229968983,
+        122.36041381701887,
+        340.0704567576337,
+        600.1655935686218
+      ],
+      "max_endpoint_drift_px": 15.620904414523125,
+      "max_endpoint_drift_fraction_width": 0.024407663147692382
+    },
+    {
+      "image": "solidWhiteCurve.jpg",
+      "source_sha256": "f789c3b40646601e61aaee5571b50d1d2615424577c6428b5d085d9ec1986ac3",
+      "condition": "noise_sigma_12",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        305.6305635035031,
+        131.26887571332463,
+        340.42655648508133,
+        584.5446891540987
+      ],
+      "perturbed_endpoints_px": [
+        303.30612670692574,
+        132.31337417339074,
+        340.1887627617209,
+        583.4401568527426
+      ],
+      "max_endpoint_drift_px": 2.324436796577345,
+      "max_endpoint_drift_fraction_width": 0.0036319324946521014
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "original",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.61172694544143,
+        95.47887983652242,
+        339.1144263325897,
+        554.4703487988685
+      ],
+      "perturbed_endpoints_px": [
+        304.61172694544143,
+        95.47887983652242,
+        339.1144263325897,
+        554.4703487988685
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "dark_55",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        304.61172694544143,
+        95.47887983652242,
+        339.1144263325897,
+        554.4703487988685
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "dark_35",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        304.61172694544143,
+        95.47887983652242,
+        339.1144263325897,
+        554.4703487988685
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "bright_125",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.61172694544143,
+        95.47887983652242,
+        339.1144263325897,
+        554.4703487988685
+      ],
+      "perturbed_endpoints_px": [
+        303.1913975461853,
+        103.44816669017064,
+        338.27322221121534,
+        554.2149549286949
+      ],
+      "max_endpoint_drift_px": 7.969286853648214,
+      "max_endpoint_drift_fraction_width": 0.012452010708825335
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "blur_15",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.61172694544143,
+        95.47887983652242,
+        339.1144263325897,
+        554.4703487988685
+      ],
+      "perturbed_endpoints_px": [
+        274.8700246901689,
+        143.30024972633356,
+        340.820412229234,
+        554.4955762943396
+      ],
+      "max_endpoint_drift_px": 47.82136988981114,
+      "max_endpoint_drift_fraction_width": 0.0747208904528299
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "noise_sigma_12",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.61172694544143,
+        95.47887983652242,
+        339.1144263325897,
+        554.4703487988685
+      ],
+      "perturbed_endpoints_px": [
+        300.75664995787,
+        107.56221293102749,
+        341.08774556738507,
+        553.7159479243242
+      ],
+      "max_endpoint_drift_px": 12.083333094505065,
+      "max_endpoint_drift_fraction_width": 0.018880207960164163
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "original",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.4731698482447,
+        90.6331925007654,
+        338.7187397293048,
+        554.2157639985633
+      ],
+      "perturbed_endpoints_px": [
+        304.4731698482447,
+        90.6331925007654,
+        338.7187397293048,
+        554.2157639985633
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "dark_55",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.4731698482447,
+        90.6331925007654,
+        338.7187397293048,
+        554.2157639985633
+      ],
+      "perturbed_endpoints_px": [
+        301.4942392067573,
+        106.71703489879917,
+        339.2690849435877,
+        554.4595868915176
+      ],
+      "max_endpoint_drift_px": 16.083842398033767,
+      "max_endpoint_drift_fraction_width": 0.02513100374692776
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "dark_35",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.4731698482447,
+        90.6331925007654,
+        338.7187397293048,
+        554.2157639985633
+      ],
+      "perturbed_endpoints_px": [
+        306.8258223980321,
+        90.76443239812147,
+        339.97153255974536,
+        553.9929054005227
+      ],
+      "max_endpoint_drift_px": 2.352652549787365,
+      "max_endpoint_drift_fraction_width": 0.0036760196090427576
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "bright_125",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.4731698482447,
+        90.6331925007654,
+        338.7187397293048,
+        554.2157639985633
+      ],
+      "perturbed_endpoints_px": [
+        303.69627747505047,
+        98.42609441008995,
+        339.0748134587191,
+        553.8789393005316
+      ],
+      "max_endpoint_drift_px": 7.7929019093245415,
+      "max_endpoint_drift_fraction_width": 0.012176409233319595
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "blur_15",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.4731698482447,
+        90.6331925007654,
+        338.7187397293048,
+        554.2157639985633
+      ],
+      "perturbed_endpoints_px": [
+        277.14934635803957,
+        141.384647977731,
+        339.9029058138643,
+        553.5723120519076
+      ],
+      "max_endpoint_drift_px": 50.75145547696559,
+      "max_endpoint_drift_fraction_width": 0.07929914918275874
+    },
+    {
+      "image": "solidWhiteRight.jpg",
+      "source_sha256": "205beaa560933d14202ce3f17d8dd6d9eb430ee90154eb8008cea4a0b91b88fe",
+      "condition": "noise_sigma_12",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.4731698482447,
+        90.6331925007654,
+        338.7187397293048,
+        554.2157639985633
+      ],
+      "perturbed_endpoints_px": [
+        302.14702530834893,
+        109.70063837487652,
+        338.23079837323917,
+        555.0793790011699
+      ],
+      "max_endpoint_drift_px": 19.067445874111115,
+      "max_endpoint_drift_fraction_width": 0.029792884178298618
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "original",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        306.21365524700093,
+        102.37423273404153,
+        330.3569978562823,
+        571.0447128750621
+      ],
+      "perturbed_endpoints_px": [
+        306.21365524700093,
+        102.37423273404153,
+        330.3569978562823,
+        571.0447128750621
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "dark_55",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        306.21365524700093,
+        102.37423273404153,
+        330.3569978562823,
+        571.0447128750621
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "dark_35",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        306.21365524700093,
+        102.37423273404153,
+        330.3569978562823,
+        571.0447128750621
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "bright_125",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        306.21365524700093,
+        102.37423273404153,
+        330.3569978562823,
+        571.0447128750621
+      ],
+      "perturbed_endpoints_px": [
+        302.5133109359129,
+        117.34655497114511,
+        332.5900718272468,
+        571.5477852820852
+      ],
+      "max_endpoint_drift_px": 14.972322237103583,
+      "max_endpoint_drift_fraction_width": 0.02339425349547435
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "blur_15",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        306.21365524700093,
+        102.37423273404153,
+        330.3569978562823,
+        571.0447128750621
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "noise_sigma_12",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        306.21365524700093,
+        102.37423273404153,
+        330.3569978562823,
+        571.0447128750621
+      ],
+      "perturbed_endpoints_px": [
+        302.20794919169555,
+        116.46471164218855,
+        332.55873383078784,
+        566.8679156035746
+      ],
+      "max_endpoint_drift_px": 14.09047890814702,
+      "max_endpoint_drift_fraction_width": 0.022016373293979718
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "original",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.0212519727116,
+        118.27858990708705,
+        329.91593764477454,
+        580.553341267314
+      ],
+      "perturbed_endpoints_px": [
+        304.0212519727116,
+        118.27858990708705,
+        329.91593764477454,
+        580.553341267314
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "dark_55",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.0212519727116,
+        118.27858990708705,
+        329.91593764477454,
+        580.553341267314
+      ],
+      "perturbed_endpoints_px": [
+        303.88383892149704,
+        119.34625801216117,
+        335.1601263851809,
+        555.8693704884304
+      ],
+      "max_endpoint_drift_px": 24.683970778883577,
+      "max_endpoint_drift_fraction_width": 0.038568704342005586
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "dark_35",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.0212519727116,
+        118.27858990708705,
+        329.91593764477454,
+        580.553341267314
+      ],
+      "perturbed_endpoints_px": [
+        305.78933464486096,
+        118.28350881688004,
+        333.8159789772047,
+        558.9532048877011
+      ],
+      "max_endpoint_drift_px": 21.600136379612877,
+      "max_endpoint_drift_fraction_width": 0.03375021309314512
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "bright_125",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.0212519727116,
+        118.27858990708705,
+        329.91593764477454,
+        580.553341267314
+      ],
+      "perturbed_endpoints_px": [
+        305.22787671568034,
+        117.64305698820522,
+        331.10460758177663,
+        578.9842049448177
+      ],
+      "max_endpoint_drift_px": 1.569136322496206,
+      "max_endpoint_drift_fraction_width": 0.002451775503900322
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "blur_15",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        304.0212519727116,
+        118.27858990708705,
+        329.91593764477454,
+        580.553341267314
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowCurve.jpg",
+      "source_sha256": "0aa00e00772c23ec2726f6dac2b88ca4092cb2db5621869cd155034f34900092",
+      "condition": "noise_sigma_12",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        304.0212519727116,
+        118.27858990708705,
+        329.91593764477454,
+        580.553341267314
+      ],
+      "perturbed_endpoints_px": [
+        307.2371348458457,
+        101.35336035167961,
+        330.39929643919754,
+        573.7070002204391
+      ],
+      "max_endpoint_drift_px": 16.92522955540744,
+      "max_endpoint_drift_fraction_width": 0.026445671180324128
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "original",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        303.73482028462524,
+        119.77561253763031,
+        336.123589091837,
+        582.4187144619614
+      ],
+      "perturbed_endpoints_px": [
+        303.73482028462524,
+        119.77561253763031,
+        336.123589091837,
+        582.4187144619614
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "dark_55",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        303.73482028462524,
+        119.77561253763031,
+        336.123589091837,
+        582.4187144619614
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "dark_35",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        303.73482028462524,
+        119.77561253763031,
+        336.123589091837,
+        582.4187144619614
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "bright_125",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        303.73482028462524,
+        119.77561253763031,
+        336.123589091837,
+        582.4187144619614
+      ],
+      "perturbed_endpoints_px": [
+        305.81210040717144,
+        119.00192926156114,
+        337.07210577884337,
+        566.3933458759419
+      ],
+      "max_endpoint_drift_px": 16.025368586019454,
+      "max_endpoint_drift_fraction_width": 0.025039638415655395
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "blur_15",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        303.73482028462524,
+        119.77561253763031,
+        336.123589091837,
+        582.4187144619614
+      ],
+      "perturbed_endpoints_px": [
+        312.58449102725405,
+        102.81543290818331,
+        334.56393665928823,
+        582.7808190022134
+      ],
+      "max_endpoint_drift_px": 16.960179629446998,
+      "max_endpoint_drift_fraction_width": 0.026500280671010935
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "noise_sigma_12",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        303.73482028462524,
+        119.77561253763031,
+        336.123589091837,
+        582.4187144619614
+      ],
+      "perturbed_endpoints_px": [
+        303.8485486556257,
+        119.90708361468899,
+        334.657135343255,
+        582.2156137211869
+      ],
+      "max_endpoint_drift_px": 1.466453748582012,
+      "max_endpoint_drift_fraction_width": 0.0022913339821593937
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "original",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        302.17767855432805,
+        120.34563778996687,
+        338.15259018170394,
+        565.9640732593957
+      ],
+      "perturbed_endpoints_px": [
+        302.17767855432805,
+        120.34563778996687,
+        338.15259018170394,
+        565.9640732593957
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "dark_55",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        302.17767855432805,
+        120.34563778996687,
+        338.15259018170394,
+        565.9640732593957
+      ],
+      "perturbed_endpoints_px": [
+        304.9518740458596,
+        119.8092009413952,
+        337.62849904391106,
+        566.150516702218
+      ],
+      "max_endpoint_drift_px": 2.774195491531543,
+      "max_endpoint_drift_fraction_width": 0.004334680455518036
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "dark_35",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        302.17767855432805,
+        120.34563778996687,
+        338.15259018170394,
+        565.9640732593957
+      ],
+      "perturbed_endpoints_px": [
+        303.8093967652588,
+        120.49304409101774,
+        334.9669880599831,
+        582.764032651989
+      ],
+      "max_endpoint_drift_px": 16.799959392593337,
+      "max_endpoint_drift_fraction_width": 0.02624993655092709
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "bright_125",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        302.17767855432805,
+        120.34563778996687,
+        338.15259018170394,
+        565.9640732593957
+      ],
+      "perturbed_endpoints_px": [
+        303.35442262401716,
+        120.55106726900993,
+        337.09099363276493,
+        566.3443313870494
+      ],
+      "max_endpoint_drift_px": 1.1767440696891072,
+      "max_endpoint_drift_fraction_width": 0.0018386626088892299
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "blur_15",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        302.17767855432805,
+        120.34563778996687,
+        338.15259018170394,
+        565.9640732593957
+      ],
+      "perturbed_endpoints_px": [
+        310.72364795418093,
+        102.44451145551125,
+        328.94185841098795,
+        566.2941968820387
+      ],
+      "max_endpoint_drift_px": 17.901126334455626,
+      "max_endpoint_drift_fraction_width": 0.027970509897586916
+    },
+    {
+      "image": "solidYellowCurve2.jpg",
+      "source_sha256": "40389c58dba72e9deb2612bc83b586abf2300c671a3378482d99fbdefe144557",
+      "condition": "noise_sigma_12",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        302.17767855432805,
+        120.34563778996687,
+        338.15259018170394,
+        565.9640732593957
+      ],
+      "perturbed_endpoints_px": [
+        305.34030472011784,
+        119.51102778979265,
+        333.9805851696196,
+        582.7346467561072
+      ],
+      "max_endpoint_drift_px": 16.77057349671145,
+      "max_endpoint_drift_fraction_width": 0.02620402108861164
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "original",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        299.70355948089,
+        106.24165795667392,
+        341.0404853964055,
+        558.1496305892933
+      ],
+      "perturbed_endpoints_px": [
+        299.70355948089,
+        106.24165795667392,
+        341.0404853964055,
+        558.1496305892933
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "dark_55",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        299.70355948089,
+        106.24165795667392,
+        341.0404853964055,
+        558.1496305892933
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "dark_35",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        299.70355948089,
+        106.24165795667392,
+        341.0404853964055,
+        558.1496305892933
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "bright_125",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        299.70355948089,
+        106.24165795667392,
+        341.0404853964055,
+        558.1496305892933
+      ],
+      "perturbed_endpoints_px": [
+        302.9073086759768,
+        91.423289402308,
+        340.60131680115853,
+        556.5746989795538
+      ],
+      "max_endpoint_drift_px": 14.818368554365918,
+      "max_endpoint_drift_fraction_width": 0.023153700866196746
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "blur_15",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        299.70355948089,
+        106.24165795667392,
+        341.0404853964055,
+        558.1496305892933
+      ],
+      "perturbed_endpoints_px": [
+        295.2695938526678,
+        107.69873520782215,
+        336.3458448035919,
+        576.1526162347755
+      ],
+      "max_endpoint_drift_px": 18.002985645482113,
+      "max_endpoint_drift_fraction_width": 0.0281296650710658
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "noise_sigma_12",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        299.70355948089,
+        106.24165795667392,
+        341.0404853964055,
+        558.1496305892933
+      ],
+      "perturbed_endpoints_px": [
+        302.9788389704973,
+        91.72212649802577,
+        339.6279034540413,
+        573.3639882538818
+      ],
+      "max_endpoint_drift_px": 15.21435766458842,
+      "max_endpoint_drift_fraction_width": 0.023772433850919407
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "original",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        301.27927903947904,
+        91.53744741306093,
+        341.75793534861333,
+        556.2437950770894
+      ],
+      "perturbed_endpoints_px": [
+        301.27927903947904,
+        91.53744741306093,
+        341.75793534861333,
+        556.2437950770894
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "dark_55",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        301.27927903947904,
+        91.53744741306093,
+        341.75793534861333,
+        556.2437950770894
+      ],
+      "perturbed_endpoints_px": [
+        301.18257987215566,
+        91.43473715233552,
+        339.2393996732885,
+        573.7153078337134
+      ],
+      "max_endpoint_drift_px": 17.47151275662395,
+      "max_endpoint_drift_fraction_width": 0.027299238682224926
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "dark_35",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        301.27927903947904,
+        91.53744741306093,
+        341.75793534861333,
+        556.2437950770894
+      ],
+      "perturbed_endpoints_px": [
+        299.56167191368905,
+        107.7897923931389,
+        341.2058571341443,
+        555.2576242120708
+      ],
+      "max_endpoint_drift_px": 16.252344980077964,
+      "max_endpoint_drift_fraction_width": 0.02539428903137182
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "bright_125",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        301.27927903947904,
+        91.53744741306093,
+        341.75793534861333,
+        556.2437950770894
+      ],
+      "perturbed_endpoints_px": [
+        302.10104939097477,
+        91.51541908767706,
+        342.76303393865976,
+        555.1702871969594
+      ],
+      "max_endpoint_drift_px": 1.0735078801300233,
+      "max_endpoint_drift_fraction_width": 0.0016773560627031613
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "blur_15",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        301.27927903947904,
+        91.53744741306093,
+        341.75793534861333,
+        556.2437950770894
+      ],
+      "perturbed_endpoints_px": [
+        296.2267446614463,
+        108.85713080202163,
+        338.6617057072603,
+        576.4521806651999
+      ],
+      "max_endpoint_drift_px": 20.208385588110445,
+      "max_endpoint_drift_fraction_width": 0.03157560248142257
+    },
+    {
+      "image": "solidYellowLeft.jpg",
+      "source_sha256": "0b4186b893df94d642b9f67d8f363ebb9277753b21263309957b649121f1bd6e",
+      "condition": "noise_sigma_12",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        301.27927903947904,
+        91.53744741306093,
+        341.75793534861333,
+        556.2437950770894
+      ],
+      "perturbed_endpoints_px": [
+        300.86445107099615,
+        92.29770847031239,
+        338.2736214493807,
+        573.7222776225447
+      ],
+      "max_endpoint_drift_px": 17.478482545455222,
+      "max_endpoint_drift_fraction_width": 0.027310128977273786
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "original",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.02577148554445,
+        130.44845706454544,
+        336.092714719416,
+        589.2993314362338
+      ],
+      "perturbed_endpoints_px": [
+        310.02577148554445,
+        130.44845706454544,
+        336.092714719416,
+        589.2993314362338
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "dark_55",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        310.02577148554445,
+        130.44845706454544,
+        336.092714719416,
+        589.2993314362338
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "dark_35",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "lost_support",
+      "reference_endpoints_px": [
+        310.02577148554445,
+        130.44845706454544,
+        336.092714719416,
+        589.2993314362338
+      ],
+      "perturbed_endpoints_px": null,
+      "max_endpoint_drift_px": null,
+      "max_endpoint_drift_fraction_width": null
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "bright_125",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.02577148554445,
+        130.44845706454544,
+        336.092714719416,
+        589.2993314362338
+      ],
+      "perturbed_endpoints_px": [
+        308.11475980832375,
+        130.10740911665164,
+        335.0756499202937,
+        590.3298955568087
+      ],
+      "max_endpoint_drift_px": 1.9110116772206993,
+      "max_endpoint_drift_fraction_width": 0.0029859557456573425
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "blur_15",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.02577148554445,
+        130.44845706454544,
+        336.092714719416,
+        589.2993314362338
+      ],
+      "perturbed_endpoints_px": [
+        306.8366586922972,
+        131.82910899242887,
+        337.67652976398443,
+        574.4863077238172
+      ],
+      "max_endpoint_drift_px": 14.81302371241668,
+      "max_endpoint_drift_fraction_width": 0.023145349550651062
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "noise_sigma_12",
+      "lighting": "fixed",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.02577148554445,
+        130.44845706454544,
+        336.092714719416,
+        589.2993314362338
+      ],
+      "perturbed_endpoints_px": [
+        313.3163204221355,
+        113.72467854997518,
+        337.00247534921004,
+        589.2551458324394
+      ],
+      "max_endpoint_drift_px": 16.723778514570256,
+      "max_endpoint_drift_fraction_width": 0.026130903929016024
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "original",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.22167291577955,
+        131.0865160854077,
+        338.135960737557,
+        574.4809495714705
+      ],
+      "perturbed_endpoints_px": [
+        310.22167291577955,
+        131.0865160854077,
+        338.135960737557,
+        574.4809495714705
+      ],
+      "max_endpoint_drift_px": 0.0,
+      "max_endpoint_drift_fraction_width": 0.0
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "dark_55",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.22167291577955,
+        131.0865160854077,
+        338.135960737557,
+        574.4809495714705
+      ],
+      "perturbed_endpoints_px": [
+        311.47781489038664,
+        114.99964811138796,
+        338.12513565480083,
+        574.3581082184644
+      ],
+      "max_endpoint_drift_px": 16.086867974019754,
+      "max_endpoint_drift_fraction_width": 0.025135731209405866
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "dark_35",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.22167291577955,
+        131.0865160854077,
+        338.135960737557,
+        574.4809495714705
+      ],
+      "perturbed_endpoints_px": [
+        308.88728771010284,
+        131.47439241284434,
+        334.9482346190571,
+        589.7039329751634
+      ],
+      "max_endpoint_drift_px": 15.222983403692865,
+      "max_endpoint_drift_fraction_width": 0.0237859115682701
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "bright_125",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.22167291577955,
+        131.0865160854077,
+        338.135960737557,
+        574.4809495714705
+      ],
+      "perturbed_endpoints_px": [
+        312.82876536394497,
+        114.65989085532993,
+        336.96223551145624,
+        589.3369744147426
+      ],
+      "max_endpoint_drift_px": 16.426625230077775,
+      "max_endpoint_drift_fraction_width": 0.025666601921996525
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "blur_15",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.22167291577955,
+        131.0865160854077,
+        338.135960737557,
+        574.4809495714705
+      ],
+      "perturbed_endpoints_px": [
+        310.2181103476378,
+        114.30804793050225,
+        335.1828364983115,
+        572.7987727388257
+      ],
+      "max_endpoint_drift_px": 16.778468154905454,
+      "max_endpoint_drift_fraction_width": 0.026216356492039773
+    },
+    {
+      "image": "whiteCarLaneSwitch.jpg",
+      "source_sha256": "6482b96813475cc0b92f0bdcb3bbe6ca39411bc8270701ddaf9d5938cc5af8b1",
+      "condition": "noise_sigma_12",
+      "lighting": "adaptive",
+      "width": 640,
+      "height": 360,
+      "transition": "both_supported",
+      "reference_endpoints_px": [
+        310.22167291577955,
+        131.0865160854077,
+        338.135960737557,
+        574.4809495714705
+      ],
+      "perturbed_endpoints_px": [
+        312.45499830793347,
+        116.03790651366,
+        339.2319584299664,
+        574.5678400893621
+      ],
+      "max_endpoint_drift_px": 15.048609571747704,
+      "max_endpoint_drift_fraction_width": 0.023513452455855788
+    }
+  ]
+}
