@@ -28,11 +28,14 @@ jobs:
       - run: python lighting_benchmark.py
       - name: Run expanded robustness matrix
         run: python robustness_matrix.py
+      - name: Audit paired geometry stability
+        run: python geometry_audit.py
       - name: Upload reproducible experiment evidence
         uses: actions/upload-artifact@v4
         with:
           name: experiment-evidence-${{ matrix.python }}
           path: |
+            geometry-results.json
             lighting-results.json
             real-results.json
             robustness-matrix-results.json
